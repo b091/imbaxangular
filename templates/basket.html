@@ -1,0 +1,42 @@
+<pre>
+    {{basket.items |json}}
+</pre>
+<div class="row" ng-show="basket.items.length">
+    <h4>Koszyk</h4>
+    <ul class="media-list">
+        <li ng-repeat="item in basket.items" ng-class-odd="'list-group-item-info'" class="list-group-item">
+            <span> <img src="{{item.photo}}" alt="asd" class="pull-left img-responsive media-object" width="50px"/> <span>&nbsp;{{item.name}} </span> <span class="pull-right">{{item.price | currency: ' PLN ' }}</span></span>
+        </li>
+        <li><br/></li>
+        <li><span class="pull-right"><strong> Suma: {{ basket.sum | currency: 'PLN ' }}</strong></span></li>
+        <li class="border-row"></li>
+    </ul>
+
+
+    <form role="form" class="jumbotron">
+        <h3>Zamawiam Produkty</h3>
+        <div class="form-group">
+            <label for="NameSurname">Imie i Nazwisko</label>
+            <input type="text" class="form-control" id="NameSurname" placeholder="Jan Kowalski">
+        </div>
+        <div class="form-group">
+            <label for="street">Ulica</label>
+            <input type="text" class="form-control" id="street" placeholder="Brzozowa 5/6">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="jan@kowalski.pl">
+        </div>
+
+        <div class="form-group">
+            <label for="postalAndCity">Kod pocztowy i miasto</label>
+            <div class=" form-inline">
+               <input type="text" class="form-control" id="postalAndCity" placeholder="80-212">
+               <input type="text" class="form-control" name="city" placeholder="Gdańsk">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default">Złóż zamówienie</button>
+    </form>
+
+</div>

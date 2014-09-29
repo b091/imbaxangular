@@ -1,0 +1,24 @@
+application: imbaxangular
+version: 1
+runtime: php
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  script: index.html
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /templates
+  static_dir: templates
+
+- url: /directives
+  static_dir: directives
+
+- url: /resources/product.php
+  script: resources/product.php

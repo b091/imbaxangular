@@ -1,0 +1,41 @@
+<div class="thumbnail" ng-class="{'alert-warning' : value.special === true}"
+     ng-show="value.special === true && $parent.hideSpecial == false || value.special === false"
+     >
+
+    <img src="{{ value.photo }}" alt="{{ value.name }}" class="img-responsive"/>
+
+
+    <div class="caption">
+        <span ng-repeat="tag in value.keywords">
+            <span class="label label-info"> {{ tag }} </span>&nbsp;
+        </span>
+
+        <form ng-show="isEditMode" name="product">
+            <div class="form-group" ng-class="{'has-error' : product.price.$invalid, 'has-success': product.price.$valid}">
+                <input name="name" type="text" ng-model="value.name" class="form-control"/>
+                <textarea name="desc" rows="3" ng-model="value.desc" class="form-control"></textarea>
+                <input type="number" name="price" ng-model="value.price" class="form-control" required/>
+            </div>
+        </form>
+
+        <h3 ng-hide="isEditMode"><a ng-href="#product/{{value.id}}">{{ value.name }}</a></h3>
+
+        <p ng-hide="isEditMode">
+            <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
+            <span ng-show="showHideDescription">{{ value.desc }}</span>
+
+            <button type="button" class="btn btn-xs btn-primary" ng-click="showHideDescription = !showHideDescription">
+                {{showHideDescription ? 'Hide' : 'Show'}} Description
+            </button>
+        </p>
+        <button class="btn btn-xs btn-default btn-link pull-right" ng-click="isEditMode = !isEditMode">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <span class="pull-right">{{ value.price | currency: 'PLN '}} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
+
+        <span class="text-left"><input type="checkbox" id="buy-{{value.id}}"
+                                       ng-click="$parent.addRemoveItemFromBasket($event, value)"/> <label
+                for="buy-{{value.id}}">Kupuje!</label></span>
+
+    </div>
+</div>

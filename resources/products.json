@@ -1,0 +1,64 @@
+{
+    "results": [
+        {
+            "id": 1,
+            "photo": "http://lorempixel.com/a/400/200/",
+            "name": "Computer",
+            "desc_short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi aliquet metus magna, non laoreet risus lacinia vel. Nulla vehicula, odio sit amet consectetur tempus, magna risus tristique quam, sed elementum quam risus at ex. Morbi et congue dolor. Mauris pretium sagittis bibendum.",
+            "price": 3000,
+            "tags": ["elektronika", "tablet", "lans"],
+            "special": true
+        },
+        {
+            "id": 2,
+            "photo": "http://lorempixel.com/b/400/200/",
+            "name": "Microphone",
+            "desc_short": "Phasellus nisl sem, pharetra non mauris nec, luctus pretium quam. ",
+            "desc": "Phasellus nisl sem, pharetra non mauris nec, luctus pretium quam. Nullam vel posuere ex, id maximus ipsum. Aenean a nisl fringilla, posuere erat vel, ultrices risus. Vestibulum efficitur purus velit, vitae ullamcorper ante aliquam a. Quisque sagittis enim in lacus rutrum, non ultricies arcu vestibulum.",
+            "price": 400,
+            "tags": ["elektronika", "tablet", "lans1"],
+            "special": false
+        },
+        {
+            "id": 3,
+            "photo": "http://lorempixel.com/c/400/200/",
+            "name": "Flower",
+            "desc_short": "Suspendisse posuere erat a ornare aliquam. Duis pretium turpis eu quam tincidunt. ",
+            "desc": "Suspendisse posuere erat a ornare aliquam. Duis pretium turpis eu quam tincidunt venenatis. Cras metus arcu, rutrum in nunc in, hendrerit tincidunt magna. Cras sodales vitae metus id tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+            "price": 10,
+            "tags": ["elektronika1", "tablet", "lans1"],
+            "special": true
+        },
+        {
+            "id": 4,
+            "photo": "http://lorempixel.com/d/400/200/",
+            "name": "Record",
+            "desc_short": "Donec ultrices porttitor blandit. Integer condimentum commodo eleifend. ",
+            "desc": "Donec ultrices porttitor blandit. Integer condimentum commodo eleifend. Donec ut iaculis ipsum. Donec id facilisis nunc, nec blandit ipsum. Pellentesque in sapien purus. Quisque a suscipit nisl. Nullam id libero tempus, pretium ex imperdiet, malesuada eros.",
+            "price": 60,
+            "tags": ["elektronika1", "tablet2", "lans"],
+            "special": true
+        },
+        {
+            "id": 5,
+            "photo": "http://lorempixel.com/e/400/200/",
+            "name": "Bottle of wine",
+            "desc_short": "Cras venenatis bibendum arcu, sed auctor nunc semper non. ",
+            "desc": "Cras venenatis bibendum arcu, sed auctor nunc semper non. In pretium, nulla ut feugiat bibendum, purus ante luctus leo, quis pulvinar ex ante ac lectus. Aliquam facilisis ante magna, vel gravida nulla volutpat quis. Praesent rhoncus feugiat ex eget varius.",
+            "price": 300,
+            "tags": ["elektronika", "tablet2", "lans3"],
+            "special": false
+        },
+        {
+            "id": 6,
+            "photo": "http://lorempixel.com/e/400/200/",
+            "name": "HDD",
+            "desc_short": "Cras venenatis bibendum arcu, sed auctor nunc semper non. ",
+            "desc": "Cras venenatis bibendum arcu, sed auctor nunc semper non. In pretium, nulla ut feugiat bibendum, purus ante luctus leo, quis pulvinar ex ante ac lectus. Aliquam facilisis ante magna, vel gravida nulla volutpat quis. Praesent rhoncus feugiat ex eget varius.",
+            "price": 300,
+            "tags": ["elektronika1", "tablet", "lans"],
+            "special": false
+        }
+    ]
+}

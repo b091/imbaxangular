@@ -1,0 +1,12 @@
+{
+    "results": {
+        "id": 2,
+        "photo": "http://lorempixel.com/b/400/200/",
+        "name": "Microphone",
+        "desc_short": "Phasellus nisl sem, pharetra non mauris nec, luctus pretium quam. ",
+        "desc": "Phasellus nisl sem, pharetra non mauris nec, luctus pretium quam. Nullam vel posuere ex, id maximus ipsum. Aenean a nisl fringilla, posuere erat vel, ultrices risus. Vestibulum efficitur purus velit, vitae ullamcorper ante aliquam a. Quisque sagittis enim in lacus rutrum, non ultricies arcu vestibulum.",
+        "price": 400,
+        "tags": ["elektronika", "tablet", "lans1"],
+        "special": false
+    }
+}
