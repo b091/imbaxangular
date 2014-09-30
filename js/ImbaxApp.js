@@ -13,13 +13,14 @@ app.controller('ProductsController',
         };
         $scope.basket = {
             sum: 0,
-            items: []
+            items: [],
+            checked: {}
         };
 
         $scope.testtest = $routeParams;
-        if($routeParams.productId)
+        if($routeParams.productId){
             $scope.product = Product.get({id: $routeParams.productId});
-
+        }
         BlockChain.getLatestBTCPrice().then(function (data) {
             $scope.btcPrice = data.data.PLN.last;
             $timeout(BlockChain.getLatestBTCPrice, 500);
@@ -46,12 +47,16 @@ app.controller('ProductsController',
         };
 
         $scope.addRemoveItemFromBasket = function (event, item) {
+            var key = 'id_' + item.id;
+            $scope.basket.checked[key] = $scope.basket.checked[key] || {};
             if (event.target.checked && $scope.basket.items.indexOf(item) < 0) {
                 $scope.basket.items.push(item);
+                $scope.basket.checked[key].selected = true;
                 $scope.basket.sum += parseInt(item.price);
             }
             else {
                 $scope.basket.items.splice($scope.basket.items.indexOf(item), 1);
+                $scope.basket.checked[key].selected = false;
                 $scope.basket.sum -= parseInt(item.price);
             }
         };

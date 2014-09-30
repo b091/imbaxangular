@@ -33,7 +33,7 @@
         </button>
         <span class="pull-right">{{ value.price | currency: 'PLN '}} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
-        <span class="text-left"><input type="checkbox" id="buy-{{value.id}}"
+        <span class="text-left"><input ng-model="$parent.basket.checked['id_' + value.id].selected" type="checkbox" id="buy-{{value.id}}"
                                        ng-click="$parent.addRemoveItemFromBasket($event, value)"/> <label
                 for="buy-{{value.id}}">Kupuje!</label></span>
 

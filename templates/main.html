@@ -1,11 +1,34 @@
-<div class="row ">
-    <div class="col-sm-12 border-row">
+<div class="row">
+    <div class="col-sm-12">
         <span>Sortowanie:</span>
 
         <div class="btn-group">
             <sorting-button value="price" text="Price" sort="sorting"></sorting-button>
             <sorting-button value="name" text="Name" sort="sorting"></sorting-button>
         </div>
+
+        <span>Opcje:</span>
+        <button class="btn btn-sm btn-default" ng-click="hideSpecial = !hideSpecial"
+                ng-class="{'active' : !hideSpecial}">{{hideSpecial ? 'Show' : 'Hide'}} special
+        </button>
+
+        <span ng-show="basket.items.length" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.items.length }}) -
+            {{ basket.sum | currency: 'PLN ' }}</a> </span>
+
+    </div>
+</div>
+<div class="row margintop5">
+    <div class="col-sm-12">
+        <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+            <input type="text" class="form-control" ng-model="filtering"/>
+        </div>
+    </div>
+</div>
+<div class="row margintop5">
+    <div class="col-sm-12">
         <span>Tagi:</span>
             <span ng-repeat="tag in tags">
                 <button type="button" class="btn btn-sm btn-primary" ng-click="$parent.tagFilter = tag"
@@ -15,24 +38,6 @@
         <button type="button" class="btn btn-sm btn-primary" ng-click="tagFilter = ''"
                 ng-class="{'active' : tagFilter === ''}"><span class="glyphicon glyphicon-asterisk"></span>
         </button>
-        <span>Opcje:</span>
-        <button class="btn btn-sm btn-default" ng-click="hideSpecial = !hideSpecial"
-                ng-class="{'active' : !hideSpecial}">{{hideSpecial ? 'Show' : 'Hide'}} special
-        </button>
-
-        <span ng-show="basket.items.length" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.items.length }}) - {{ basket.sum | currency: 'PLN ' }}</a> </span>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <div class="input-group">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search"></span>
-                </span>
-            <input type="text" class="form-control" ng-model="filtering" />
-        </div>
     </div>
 </div>
 <br/>
