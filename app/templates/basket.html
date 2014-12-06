@@ -5,7 +5,7 @@
             <span> <img src="{{item.photo}}" alt="asd" class="pull-left img-responsive media-object" width="50px"/> <span>&nbsp;{{item.name}} </span> <span class="pull-right">{{item.price | currency: ' PLN ' }}</span></span>
         </li>
         <li><br/></li>
-        <li><span class="pull-right"><strong> Suma: {{ basket.sum | currency: 'PLN ' }}</strong></span></li>
+        <li><span class="pull-right"><strong> Suma: {{ basket.sum | currency }}</strong></span></li>
         <li class="border-row"></li>
     </ul>
 

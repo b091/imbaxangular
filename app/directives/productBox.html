@@ -31,7 +31,7 @@
         <button class="btn btn-xs btn-default btn-link pull-right" ng-click="isEditMode = !isEditMode">
             <span class="glyphicon glyphicon-edit"></span>
         </button>
-        <span class="pull-right">{{ value.price | currency: 'PLN '}} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
+        <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
         <span class="text-left"><input ng-model="$parent.basket.checked['id_' + value.id].selected" type="checkbox" id="buy-{{value.id}}"
                                        ng-click="$parent.addRemoveItemFromBasket($event, value)"/> <label

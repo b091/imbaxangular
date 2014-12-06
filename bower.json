@@ -1,0 +1,26 @@
+{
+    "name": "imbaxangular",
+    "version": "0.1.0",
+    "authors": [
+        "b091 <skrzypkowiak@gmail.com>"
+    ],
+    "description": "imbax fun with angularjs",
+    "moduleType": [
+        "es6"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": "~2.1.1",
+        "angular": "~1.2.25",
+        "angular-route": "~1.2.25",
+        "angular-resource": "~1.2.25",
+        "bootstrap": "~3.2.0"
+    }
+}

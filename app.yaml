@@ -6,19 +6,19 @@ threadsafe: true
 
 handlers:
 - url: /
-  script: index.html
+  script: app/index.html
 
 - url: /css
-  static_dir: css
+  static_dir: app/css
 
 - url: /js
-  static_dir: js
+  static_dir: app/js
 
 - url: /templates
-  static_dir: templates
+  static_dir: app/templates
 
 - url: /directives
-  static_dir: directives
+  static_dir: app/directives
 
 - url: /resources/product.php
-  script: resources/product.php
+  script: app/resources/product.php
