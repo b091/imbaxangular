@@ -1,6 +1,6 @@
 <div class="thumbnail" ng-class="{'alert-warning' : value.special === true}"
      ng-show="value.special === true && $parent.hideSpecial == false || value.special === false"
-     >
+        >
 
     <img src="{{ value.photo }}" alt="{{ value.name }}" class="img-responsive"/>
 
@@ -23,7 +23,10 @@
             <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
             <span ng-show="showHideDescription">{{ value.desc }}</span>
 
-            <button type="button" class="btn btn-xs btn-primary" ng-click="showHideDescription = !showHideDescription">
+            <button
+                    type="button"
+                    class="btn btn-xs btn-primary"
+                    ng-click="showHideDescription = !showHideDescription">
                 {{showHideDescription ? 'Hide' : 'Show'}} Description
             </button>
         </p>
@@ -32,10 +35,15 @@
         </button>
         <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
-        <span class="text-left"><input ng-model="$parent.basket.checked['id_' + value.id].selected" type="checkbox" id="buy-{{value.id}}"
-                                       ng-click="$parent.basket.addRemoveItemFromBasket($event, value)"/> <label
-                for="buy-{{value.id}}">Kupuje!</label></span>
-        <select ng-model="productQuantity" ng-options="variant.value as variant.name for variant in quantityOptions">
+        <span class="text-left">
+            <input ng-model="$parent.basket.checked['id_' + value.id].selected"
+                   type="checkbox"
+                   id="buy-{{value.id}}"
+                   ng-click="$parent.basket.addRemoveItemFromBasket($event, value)"/>
+            <label for="buy-{{value.id}}">Kupuje!</label></span>
+
+        <select ng-model="$parent.basket.checked['id_' + value.id].quantity"
+                ng-options="variant.value as variant.name for variant in quantityOptions">
             <option value="">Wybierz ilosc</option>
         </select>
 
