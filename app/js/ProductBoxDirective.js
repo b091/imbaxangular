@@ -1,8 +1,9 @@
-app.directive('productBox', function () {
+app.directive('productBox', function() {
     return {
         restrict: 'E',
         scope: {
-            value: '='
+            value: '=',
+            quantityOptions: '='
         },
         templateUrl: 'directives/productBox.html'
     }

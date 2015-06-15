@@ -36,5 +36,9 @@
                                        ng-click="$parent.addRemoveItemFromBasket($event, value)"/> <label
                 for="buy-{{value.id}}">Kupuje!</label></span>
 
+        <select ng-model="productQuantity" ng-options="variant.value as variant.name for variant in quantityOptions">
+            <option value="">Wybierz ilosc</option>
+        </select>
+
     </div>
 </div>

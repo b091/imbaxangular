@@ -46,6 +46,7 @@
     <div class="col-sm-4"
          ng-repeat="product in products | filter:filtering | orderBy:['special'] | orderBy:sorting.by:sorting.desc"
          ng-show="filterTags(product, tagFilter)">
-        <product-box value="product"></product-box>
+
+        <product-box value="product" quantity-options="productsQuantityOptions"></product-box>
     </div>
 </div>

@@ -1,7 +1,8 @@
 
 app.controller('ProductsController',
-    ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', function($scope, $timeout, $routeParams, Products, BlockChain, Product) {
+    ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', 'QuantityOptions', function($scope, $timeout, $routeParams, Products, BlockChain, Product, QuantityOptions) {
 
+        $scope.productsQuantityOptions = QuantityOptions;
         $scope.hideSpecial = false;
         $scope.tagFilter = '';
         $scope.products = [];
