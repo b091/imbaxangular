@@ -1,5 +1,17 @@
 app.factory('BasketController', function() {
 
+    function add(scope, item, key) {
+        scope.items.push(item);
+        scope.checked[key].selected = true;
+        scope.sum += parseInt(item.price);
+    }
+
+    function remove(scope, item) {
+        scope.items.splice(scope.items.indexOf(item), 1);
+        scope.checked[key].selected = false;
+        scope.sum -= parseInt(item.price);
+    }
+
     return {
         sum: 0,
         items: [],
@@ -7,16 +19,11 @@ app.factory('BasketController', function() {
         addRemoveItemFromBasket: function(event, item) {
             var key = 'id_' + item.id;
             this.checked[key] = this.checked[key] || {};
-
             if (event.target.checked && this.items.indexOf(item) < 0) {
-                this.items.push(item);
-                this.checked[key].selected = true;
-                this.sum += parseInt(item.price);
+                add(this, item, key);
             }
             else {
-                this.items.splice(this.items.indexOf(item), 1);
-                this.checked[key].selected = false;
-                this.sum -= parseInt(item.price);
+                remove(this, item);
             }
         }
     };
