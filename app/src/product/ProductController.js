@@ -1,6 +1,7 @@
 app.controller('ProductsController', ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', 'QuantityOptions', 'BasketController', function($scope, $timeout, $routeParams, Products, BlockChain, Product, QuantityOptions, BasketController) {
 
     $scope.productsQuantityOptions = QuantityOptions;
+    $scope.quantity = null;
     $scope.hideSpecial = false;
     $scope.tagFilter = '';
     $scope.products = [];

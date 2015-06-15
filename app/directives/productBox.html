@@ -1,6 +1,6 @@
-<div class="thumbnail" ng-class="{'alert-warning' : value.special === true}"
-     ng-show="value.special === true && $parent.hideSpecial == false || value.special === false"
-        >
+<div class="thumbnail"
+     ng-class="{'alert-warning' : value.special === true}"
+     ng-show="value.special === true && $parent.hideSpecial == false || value.special === false">
 
     <img src="{{ value.photo }}" alt="{{ value.name }}" class="img-responsive"/>
 
@@ -23,27 +23,28 @@
             <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
             <span ng-show="showHideDescription">{{ value.desc }}</span>
 
-            <button
-                    type="button"
+            <button type="button"
                     class="btn btn-xs btn-primary"
-                    ng-click="showHideDescription = !showHideDescription">
+                    ng-click="onShowHideDecriptionChange()">
                 {{showHideDescription ? 'Hide' : 'Show'}} Description
             </button>
         </p>
-        <button class="btn btn-xs btn-default btn-link pull-right" ng-click="isEditMode = !isEditMode">
+        <button class="btn btn-xs btn-default btn-link pull-right" ng-click="onEditInPlaceChange()">
             <span class="glyphicon glyphicon-edit"></span>
         </button>
         <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
         <span class="text-left">
-            <input ng-model="$parent.basket.checked['id_' + value.id].selected"
+            <input ng-model="$parent.basket.checked[$parent.basket.getKey(value.id)].selected"
                    type="checkbox"
                    id="buy-{{value.id}}"
-                   ng-click="$parent.basket.addRemoveItemFromBasket($event, value)"/>
+                   ng-click="onCheckboxChange($event)"/>
             <label for="buy-{{value.id}}">Kupuje!</label></span>
 
-        <select ng-model="$parent.basket.checked['id_' + value.id].quantity"
-                ng-options="variant.value as variant.name for variant in quantityOptions">
+        <select ng-model="$parent.basket.checked[$parent.basket.getKey(value.id)].quantity"
+                ng-options="variant.value as variant.name for variant in quantityOptions"
+                ng-change="onSelectChange()"
+                ng-disabled="isSelectDisabled()">
             <option value="">Wybierz ilosc</option>
         </select>
 
