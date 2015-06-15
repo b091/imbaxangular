@@ -19,33 +19,29 @@
 
         <h4 ng-hide="isEditMode"><a ng-href="#product/{{value.id}}">{{ value.name }}</a></h4>
 
-        <p ng-hide="isEditMode">
+        <p ng-hide="isEditMode" ng-click="onShowHideDescriptionChange()" class="product-description">
             <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
             <span ng-show="showHideDescription">{{ value.desc }}</span>
-
-            <button type="button"
-                    class="btn btn-xs btn-primary"
-                    ng-click="onShowHideDescriptionChange()">
-                {{showHideDescription ? 'Hide' : 'Show'}} Description
-            </button>
         </p>
+
         <button class="btn btn-xs btn-default btn-link pull-right" ng-click="onEditInPlaceChange()">
             <span class="glyphicon glyphicon-edit"></span>
         </button>
+
         <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
         <span class="text-left">
             <input ng-model="selectedElement"
                    type="checkbox"
                    id="buy-{{value.id}}"
-                   ng-click="onCheckboxChange($event)"/>
-            <label for="buy-{{value.id}}">Kupuje!</label></span>
+                   ng-click="onCheckboxChange($event)" class="hidden"/>
+            <label for="buy-{{value.id}}" class="product-description btn btn-info btn-sm" ng-class="{'active' : !selectDisabled()}">Kupuje!</label></span>
 
         <select ng-model="quantity"
                 ng-options="variant.value as variant.name for variant in quantityOptions"
                 ng-change="onSelectChange()"
                 ng-disabled="selectDisabled()">
-            <option value="">Wybierz ilosc</option>
+            <option value="">Ilość</option>
         </select>
 
     </div>

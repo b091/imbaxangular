@@ -12,3 +12,7 @@
 {
     margin-top: 5px;
 }
+
+.product-description {
+    cursor: pointer;
+}
