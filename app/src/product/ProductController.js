@@ -14,7 +14,6 @@ app.controller('ProductsController', ['$scope', '$timeout', '$routeParams', 'Pro
     $scope.tagFilter = '';
     $scope.products = [];
     $scope.tags = [];
-    $scope.currencies = [];
     $scope.sorting = {
         by: ['special', 'price'],
         desc: true
@@ -24,10 +23,6 @@ app.controller('ProductsController', ['$scope', '$timeout', '$routeParams', 'Pro
     if ($routeParams.productId) {
         $scope.product = Product.get({id: $routeParams.productId});
     }
-
-    BlockChain.getCurrencies().then(function(data) {
-        $scope.currencies = data.currencies;
-    });
 
     BlockChain.getLatestBTCPrice().then(function(data) {
         $scope.btcPrice = data.data.PLN.last;

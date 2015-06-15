@@ -1,7 +1,12 @@
-app.factory('BasketController', function() {
-    var quantityList = {};
-    var items = [];
-    var sum = 0;
+app.factory('BasketController', ['BlockChain', function(BlockChain) {
+    var quantityList = {},
+        items = [],
+        sum = 0,
+        currencies = [];
+
+    BlockChain.getCurrencies().then(function(data) {
+        currencies = data.currencies;
+    });
 
     function getQuantityKey(id) {
         return '__k__' + id;
@@ -71,4 +76,4 @@ app.factory('BasketController', function() {
             return items;
         }
     };
-});
+}]);

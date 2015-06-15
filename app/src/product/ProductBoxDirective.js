@@ -15,7 +15,7 @@ app.directive('productBox', function() {
             $scope.quantity = basket.getQuantity($scope.value);
 
             $scope.onCheckboxChange = function(event) {
-                if(event.target.checked && !$scope.selectedElement){
+                if (event.target.checked && !$scope.selectedElement) {
                     basket.add(this.value);
                 }
                 else {

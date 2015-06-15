@@ -12,7 +12,7 @@
                 ng-class="{'active' : !hideSpecial}">{{hideSpecial ? 'Show' : 'Hide'}} special
         </button>
 
-        <span ng-show="basket.countItems()" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.countItems() }}) - {{ basket.countPrice() | currency }}</a> </span>
+        <span ng-show="basket.isEmpty()" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.countItems() }}) - {{ basket.sum | currency }}</a> </span>
 
     </div>
 </div>
