@@ -21,13 +21,12 @@ app.controller('ProductsController',
         if ($routeParams.productId) {
             $scope.product = Product.get({id: $routeParams.productId});
         }
-        BlockChain.getLatestBTCPrice().then(function(data) {
-            console.log(data);
 
-            for (var key in data.data) {
-                if (key === 'length' || !data.data.hasOwnProperty(key)) continue;
-                $scope.currencies.push(key);
-            }
+        BlockChain.getCurrencies().then(function(data){
+            $scope.currencies = data.currencies;
+        });
+
+        BlockChain.getLatestBTCPrice().then(function(data) {
             $scope.btcPrice = data.data.PLN.last;
             $timeout(BlockChain.getLatestBTCPrice, 500);
         });
