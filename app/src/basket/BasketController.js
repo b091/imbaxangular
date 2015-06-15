@@ -30,33 +30,29 @@ app.factory('BasketController', function() {
             sum += parseInt(item.price);
         },
         remove: function(item) {
+            while (quantityList[getQuantityKey(item.id)] > 0) {
+                removeQuantity(item.id);
+                removePrice(item.price);
+            }
             items.splice(items.indexOf(item), 1);
-            removeQuantity(item.id);
-            removePrice(item.price);
         },
         contains: function(item) {
             return items.indexOf(item) >= 0;
         },
         setQuantity: function(item, quantity) {
             var elementQuantity = quantityList[getQuantityKey(item.id)];
-            if (elementQuantity === quantity) {
-                return;
-            }
-
             if (elementQuantity < quantity) {
                 while (elementQuantity <= --quantity) {
                     this.add(item);
                 }
-                return;
             }
-            else {
+            else if (elementQuantity < quantity) {
                 while (elementQuantity > quantity++) {
                     removeQuantity(item.id);
                     removePrice(item.price);
                 }
-                return;
             }
-
+            return elementQuantity;
         },
         countPrice: function() {
             return sum;
@@ -67,6 +63,9 @@ app.factory('BasketController', function() {
                 result += quantityList[index];
             }
             return result;
+        },
+        getQuantity: function(item) {
+            return quantityList[getQuantityKey(item.id)];
         },
         getItems: function() {
             return items;

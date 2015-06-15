@@ -12,16 +12,20 @@ app.directive('productBox', function() {
             $scope.isEditMode = false;
             $scope.showHideDescription = false;
             $scope.selectedElement = basket.contains($scope.value);
-            $scope.quantity = null;
+            $scope.quantity = basket.getQuantity($scope.value);
 
             $scope.onCheckboxChange = function(event) {
-                var method = (event.target.checked && !$scope.selectedElement) ?
-                    'add' : 'remove';
-                basket[method](this.value);
+                if(event.target.checked && !$scope.selectedElement){
+                    basket.add(this.value);
+                }
+                else {
+                    basket.remove(this.value);
+                }
+                $scope.quantity = basket.getQuantity($scope.value);
             };
 
             $scope.onSelectChange = function() {
-                this.$parent.basket.setQuantity(this.value, $scope.quantity);
+                $scope.quantity = basket.setQuantity(this.value, $scope.quantity);
             };
 
             $scope.selectDisabled = function() {
