@@ -7,27 +7,25 @@ app.directive('productBox', function() {
         },
         templateUrl: 'directives/productBox.html',
         link: function($scope, element, attrs) {
+            var basket = $scope.$parent.basket;
 
-            $scope.showHideDescription = false;
             $scope.isEditMode = false;
+            $scope.showHideDescription = false;
+            $scope.selectedElement = basket.contains($scope.value);
+            $scope.quantity = null;
 
             $scope.onCheckboxChange = function(event) {
-                var basket = this.$parent.basket;
-
-                if (event.target.checked && !basket.contains(this.value)) {
-                    basket.add(this.value);
-                }
-                else {
-                    basket.remove(this.value);
-                }
+                var method = (event.target.checked && !$scope.selectedElement) ?
+                    'add' : 'remove';
+                basket[method](this.value);
             };
 
             $scope.onSelectChange = function() {
-                this.$parent.basket.setQuantity(this.value.id);
+                this.$parent.basket.setQuantity(this.value, $scope.quantity);
             };
 
-            $scope.isSelectDisabled = function() {
-                return !this.$parent.basket.isSelected(this.value.id);
+            $scope.selectDisabled = function() {
+                return !$scope.selectedElement;
             };
 
             $scope.onShowHideDescriptionChange = function() {

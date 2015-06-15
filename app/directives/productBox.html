@@ -35,16 +35,16 @@
         <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
         <span class="text-left">
-            <input ng-model="$parent.basket.checked[$parent.basket.getKey(value.id)].selected"
+            <input ng-model="selectedElement"
                    type="checkbox"
                    id="buy-{{value.id}}"
                    ng-click="onCheckboxChange($event)"/>
             <label for="buy-{{value.id}}">Kupuje!</label></span>
 
-        <select ng-model="$parent.basket.checked[$parent.basket.getKey(value.id)].quantity"
+        <select ng-model="quantity"
                 ng-options="variant.value as variant.name for variant in quantityOptions"
                 ng-change="onSelectChange()"
-                ng-disabled="isSelectDisabled()">
+                ng-disabled="selectDisabled()">
             <option value="">Wybierz ilosc</option>
         </select>
 

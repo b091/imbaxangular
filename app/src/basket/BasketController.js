@@ -1,35 +1,75 @@
 app.factory('BasketController', function() {
+    var quantityList = {};
+    var items = [];
+    var sum = 0;
+
+    function getQuantityKey(id) {
+        return '__k__' + id;
+    }
+
+    function addQuantity(id) {
+        var key = getQuantityKey(id);
+        quantityList[key] = quantityList[key] || 0;
+        quantityList[key] += 1;
+    }
+
+    function removeQuantity(id) {
+        quantityList[getQuantityKey(id)] -= 1;
+    }
+
+    function removePrice(price) {
+        sum -= parseInt(price);
+    }
 
     return {
-        sum: 0,
-        items: [],
-        checked: {},
-        getKey: function(id) {
-            return 'id_' + id;
-        },
         add: function(item) {
-            var key = this.getKey(item.id);
-            this.initElement(key);
-            this.items.push(item);
-            this.checked[key].selected = true;
-            this.sum += parseInt(item.price);
-        },
-        initElement: function(key){
-            this.checked[key] = this.checked[key] || {quantity: 1};
+            if (!this.contains(item)) {
+                items.push(item);
+            }
+            addQuantity(item.id);
+            sum += parseInt(item.price);
         },
         remove: function(item) {
-            this.items.splice(this.items.indexOf(item), 1);
-            this.checked[this.getKey(item.id)].selected = false;
-            this.sum -= parseInt(item.price);
+            items.splice(items.indexOf(item), 1);
+            removeQuantity(item.id);
+            removePrice(item.price);
         },
         contains: function(item) {
-            return this.items.indexOf(item) >= 0;
+            return items.indexOf(item) >= 0;
         },
-        isSelected: function(id) {
-            return this.checked[this.getKey(id)] && this.checked[this.getKey(id)].selected;
+        setQuantity: function(item, quantity) {
+            var elementQuantity = quantityList[getQuantityKey(item.id)];
+            if (elementQuantity === quantity) {
+                return;
+            }
+
+            if (elementQuantity < quantity) {
+                while (elementQuantity <= --quantity) {
+                    this.add(item);
+                }
+                return;
+            }
+            else {
+                while (elementQuantity > quantity++) {
+                    removeQuantity(item.id);
+                    removePrice(item.price);
+                }
+                return;
+            }
+
         },
-        setQuantity: function(id) {
-            console.log(this.checked[this.getKey(id)]);
+        countPrice: function() {
+            return sum;
+        },
+        countItems: function() {
+            var result = 0;
+            for (var index in quantityList) {
+                result += quantityList[index];
+            }
+            return result;
+        },
+        getItems: function() {
+            return items;
         }
     };
 });
