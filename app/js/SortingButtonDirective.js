@@ -1,4 +1,3 @@
-
 app.directive('sortingButton', function () {
     return {
         restrict: 'E',
@@ -15,14 +14,4 @@ app.directive('sortingButton', function () {
             }
         }
     };
-});
-
-app.directive('productBox', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            value: '='
-        },
-        templateUrl: 'directives/productBox.html'
-    }
 });

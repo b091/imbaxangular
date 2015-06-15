@@ -1,11 +1,3 @@
-app.factory('BlockChain', ['$http', function ($http) {
-    return {
-        getLatestBTCPrice: function () {
-            return $http.get('https://blockchain.info/pl/ticker?cors=true');
-        }
-    };
-}]);
-
 app.factory('Products', ['$http', '$resource', function ($http, $resource) {
     return {
         list: function () {
@@ -20,12 +12,4 @@ app.factory('Products', ['$http', '$resource', function ($http, $resource) {
             return $resource("resources/product.json", {id: productId});
         }
     };
-}]);
-
-
-app.factory('Product', ['$resource', function ($resource) {
-    return $resource('resources/product.php?:id', null,
-        {
-            'update': {method: 'PUT'}
-        });
 }]);
