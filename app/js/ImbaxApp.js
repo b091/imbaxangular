@@ -27,13 +27,16 @@ app.controller('ProductsController',
         });
 
         $scope.isEditMode = true;
+        Products.list().then(function (response, dupa) {
+            $scope.products = response.data.results;
+        });
+
         Product.get().$promise.then(function (response) {
-            $scope.products = response.results;
             var i, x;
-            for (i = 0; $scope.products.length > i; i++) {
-                for (x = 0; $scope.products[i].tags.length > x; x++) {
-                    if ($.inArray($scope.products[i].tags[x], $scope.tags) < 0) {
-                        $scope.tags.push($scope.products[i].tags[x]);
+            for (i = 0; response.results.length > i; i++) {
+                for (x = 0; response.results[i].tags.length > x; x++) {
+                    if ($.inArray(response.results[i].tags[x], $scope.tags) < 0) {
+                        $scope.tags.push(response.results[i].tags[x]);
                     }
                 }
             }
