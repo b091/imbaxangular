@@ -1,5 +1,13 @@
 app.controller('ProductsController', ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', 'QuantityOptions', 'BasketController', function($scope, $timeout, $routeParams, Products, BlockChain, Product, QuantityOptions, BasketController) {
 
+    function chunk(arr, size) {
+        var newArr = [];
+        for (var i=0; i<arr.length; i+=size) {
+            newArr.push(arr.slice(i, i+size));
+        }
+        console.log(newArr);
+        return newArr;
+    }
     $scope.productsQuantityOptions = QuantityOptions;
     $scope.quantity = null;
     $scope.hideSpecial = false;
@@ -28,7 +36,7 @@ app.controller('ProductsController', ['$scope', '$timeout', '$routeParams', 'Pro
 
     $scope.isEditMode = true;
     Products.list().then(function(response) {
-        $scope.products = response.data.results;
+        $scope.products = chunk(response.data.results, 3);
         var i, x;
         for (i = 0; response.data.results.length > i; i++) {
             for (x = 0; response.data.results[i].tags.length > x; x++) {
