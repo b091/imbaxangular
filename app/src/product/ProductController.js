@@ -18,7 +18,6 @@ app.controller('ProductsController',
             checked: {}
         };
 
-        $scope.testtest = $routeParams;
         if ($routeParams.productId) {
             $scope.product = Product.get({id: $routeParams.productId});
         }
