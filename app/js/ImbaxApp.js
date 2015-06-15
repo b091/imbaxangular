@@ -1,7 +1,7 @@
 var app = angular.module('ImbaxApp', ['ngRoute', 'ngResource']);
 
 app.controller('ProductsController',
-    ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', function ($scope, $timeout, $routeParams, Products, BlockChain, Product) {
+    ['$scope', '$timeout', '$routeParams', 'Products', 'BlockChain', 'Product', function($scope, $timeout, $routeParams, Products, BlockChain, Product) {
 
         $scope.hideSpecial = false;
         $scope.tagFilter = '';
@@ -18,20 +18,20 @@ app.controller('ProductsController',
         };
 
         $scope.testtest = $routeParams;
-        if($routeParams.productId){
+        if ($routeParams.productId) {
             $scope.product = Product.get({id: $routeParams.productId});
         }
-        BlockChain.getLatestBTCPrice().then(function (data) {
+        BlockChain.getLatestBTCPrice().then(function(data) {
             $scope.btcPrice = data.data.PLN.last;
             $timeout(BlockChain.getLatestBTCPrice, 500);
         });
 
         $scope.isEditMode = true;
-        Products.list().then(function (response, dupa) {
+        Products.list().then(function(response, dupa) {
             $scope.products = response.data.results;
         });
 
-        Product.get().$promise.then(function (response) {
+        Product.get().$promise.then(function(response) {
             var i, x;
             for (i = 0; response.results.length > i; i++) {
                 for (x = 0; response.results[i].tags.length > x; x++) {
@@ -42,14 +42,14 @@ app.controller('ProductsController',
             }
         });
 
-        $scope.filterTags = function (item, filter) {
+        $scope.filterTags = function(item, filter) {
             if (filter != '') {
                 return ($.inArray(filter, item.tags) > -1);
             }
             return true;
         };
 
-        $scope.addRemoveItemFromBasket = function (event, item) {
+        $scope.addRemoveItemFromBasket = function(event, item) {
             var key = 'id_' + item.id;
             $scope.basket.checked[key] = $scope.basket.checked[key] || {};
             if (event.target.checked && $scope.basket.items.indexOf(item) < 0) {
@@ -64,17 +64,3 @@ app.controller('ProductsController',
             }
         };
     }]);
-
-
-app.config(function ($routeProvider) {
-
-    $routeProvider.when('/home', {
-        templateUrl: 'templates/main.html'
-    }).when('/basket', {
-        templateUrl: 'templates/basket.html'
-    }).when('/product/:productId', {
-        templateUrl: 'templates/product.html'
-    }).otherwise({
-        redirectTo: '/home'
-    });
-});
