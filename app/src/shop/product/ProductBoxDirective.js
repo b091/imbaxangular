@@ -7,11 +7,8 @@ app.directive('productBox', function() {
         },
         templateUrl: 'src/shop/tpl/productBox.html',
         link: function($scope, element, attrs) {
-            var basket = $scope.$parent.basket;
-
             $scope.isEditMode = false;
             $scope.showHideDescription = false;
-            //$scope.quantity = basket.getQuantity($scope.value);
 
             $scope.onShowHideDescriptionChange = function() {
                 $scope.showHideDescription = !$scope.showHideDescription;
