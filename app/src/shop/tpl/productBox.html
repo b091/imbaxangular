@@ -19,30 +19,9 @@
         <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
         <span ng-show="showHideDescription">{{ value.desc }}</span>
     </p>
-
     <button class="btn btn-xs btn-default btn-link pull-right" ng-click="onEditInPlaceChange()">
         <span class="glyphicon glyphicon-edit"></span>
     </button>
 
-    <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
-
-        <span class="text-left">
-            <input ng-model="selectedElement"
-                   type="checkbox"
-                   id="buy-{{value.id}}"
-                   ng-click="onCheckboxChange($event)" class="hidden"/>
-            <label for="buy-{{value.id}}"
-                   class="product-description btn btn-info btn-xs"
-                   ng-class="{'active' : !selectDisabled()}">
-                Kupuje!
-            </label>
-        </span>
-
-    <select ng-model="quantity"
-            ng-options="variant.value as variant.name for variant in quantityOptions"
-            ng-change="onSelectChange()"
-            ng-disabled="selectDisabled()">
-        <option value="">Ilość</option>
-    </select>
-
+    <buy-box-directive product="value"></buy-box-directive>
 </div>

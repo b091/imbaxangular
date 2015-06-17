@@ -1,0 +1,20 @@
+<span class="pull-right">{{ product.price | currency }} | {{ product.price / $parent.btcPrice | currency: 'BTC ' }} </span>
+<span class="text-left">
+    <input ng-model="selectedElement"
+           type="checkbox"
+           id="buy-{{product.id}}"
+           ng-click="onCheckboxChange($event)" class="hidden"/>
+
+    <label for="buy-{{product.id}}"
+           class="product-description btn btn-info btn-xs"
+           ng-class="{'active' : !selectDisabled()}">
+        Kupuje!
+    </label>
+
+</span>
+<select ng-model="quantity"
+        ng-options="variant.value as variant.name for variant in quantityOptions"
+        ng-change="onSelectChange()"
+        ng-disabled="selectDisabled()">
+    <option value="">Ilość</option>
+</select>

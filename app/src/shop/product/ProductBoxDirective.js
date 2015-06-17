@@ -11,26 +11,7 @@ app.directive('productBox', function() {
 
             $scope.isEditMode = false;
             $scope.showHideDescription = false;
-            $scope.selectedElement = basket.contains($scope.value);
-            $scope.quantity = basket.getQuantity($scope.value);
-
-            $scope.onCheckboxChange = function(event) {
-                if (event.target.checked && !$scope.selectedElement) {
-                    basket.add(this.value);
-                }
-                else {
-                    basket.remove(this.value);
-                }
-                $scope.quantity = basket.getQuantity($scope.value);
-            };
-
-            $scope.onSelectChange = function() {
-                $scope.quantity = basket.setQuantity(this.value, $scope.quantity);
-            };
-
-            $scope.selectDisabled = function() {
-                return !$scope.selectedElement;
-            };
+            //$scope.quantity = basket.getQuantity($scope.value);
 
             $scope.onShowHideDescriptionChange = function() {
                 $scope.showHideDescription = !$scope.showHideDescription;
