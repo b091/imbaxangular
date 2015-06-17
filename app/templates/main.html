@@ -1,21 +1,5 @@
+<span ng-show="basket.getItems().length" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.countItems() }}) - {{ basket.countPrice() | currency }}</a> </span>
 <div class="row">
-    <div class="col-sm-12">
-        <span>Sortowanie:</span>
-
-        <div class="btn-group">
-            <sorting-button value="price" text="Price" sort="sorting"></sorting-button>
-            <sorting-button value="name" text="Name" sort="sorting"></sorting-button>
-        </div>
-
-        <span>Opcje:</span>
-        <button class="btn btn-sm btn-default" ng-click="hideSpecial = !hideSpecial"
-                ng-class="{'active' : !hideSpecial}">{{hideSpecial ? 'Show' : 'Hide'}} special
-        </button>
-        <span ng-show="basket.getItems().length" class="pull-right"> <a href="#basket"> Koszyk ({{ basket.countItems() }}) - {{ basket.countPrice() | currency }}</a> </span>
-
-    </div>
-</div>
-<div class="row margintop5">
     <div class="col-sm-12">
         <div class="input-group">
                 <span class="input-group-addon">
@@ -25,25 +9,50 @@
         </div>
     </div>
 </div>
-<div class="row margintop5">
-    <div class="col-sm-12">
-        <span>Tagi:</span>
-            <span ng-repeat="tag in tags">
-                <button type="button" class="btn btn-sm btn-primary" ng-click="$parent.tagFilter = tag"
-                        ng-class="{'active' : $parent.tagFilter === tag}">{{tag}}
-                </button>
-            </span>
-        <button type="button" class="btn btn-sm btn-primary" ng-click="tagFilter = ''"
-                ng-class="{'active' : tagFilter === ''}"><span class="glyphicon glyphicon-asterisk"></span>
-        </button>
-    </div>
-</div>
+
 <br/>
+
+<div class="product-tags pull-left">
+    <span>Tagi:</span>
+        <span ng-repeat="tag in tags">
+            <button type="button"
+                    class="btn btn-xs btn-primary"
+                    ng-click="$parent.tagFilter = tag"
+                    ng-class="{'active' : $parent.tagFilter === tag}">
+                {{tag}}
+            </button>
+        </span>
+    <button type="button"
+            class="btn btn-xs btn-primary"
+            ng-click="tagFilter = ''"
+            ng-class="{'active' : tagFilter === ''}">
+        <span class="glyphicon glyphicon-asterisk"></span>
+    </button>
+</div>
+
+<div class="product-sort pull-right">
+    <span>Sortowanie:</span>
+
+    <div class="btn-group">
+        <sorting-button value="price" text="Price" sort="sorting"></sorting-button>
+        <sorting-button value="name" text="Name" sort="sorting"></sorting-button>
+    </div>
+
+    <span>Opcje:</span>
+    <button class="btn btn-sm btn-default"
+            ng-click="hideSpecial = !hideSpecial"
+            ng-class="{'active' : !hideSpecial}">
+        {{hideSpecial ? 'Show' : 'Hide'}} special
+    </button>
+</div>
+
+<br style="clear: both;"/>
 
 <ul class="product-list">
     <li ng-repeat="product in products | filter:filtering | orderBy:['special'] | orderBy:sorting.by:sorting.desc"
         ng-class="{'alert-warning' : product.special === true}"
-        ng-show="product.special === true && $parent.hideSpecial == false || product.special === false">
+        ng-show="filterTags(product, tagFilter) && product.special === true && $parent.hideSpecial == false || filterTags(product, tagFilter) && product.special === false"
+        ng-show="">
         <product-box value="product" quantity-options="productsQuantityOptions"></product-box>
     </li>
 </ul>
