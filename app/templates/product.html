@@ -1,6 +1,14 @@
 
 <h3>{{product.name}}</h3>
+<div class="col-lg-4"><img src="{{ product.photo }}" alt="{{ product.name }}" class="img-responsive"/></div>
+<div class="col-lg-8">
+    <p>{{product.desc}}</p>
+    <p>{{product.price | currency}}</p>
+</div>
 
-<p>{{product.desc}}</p>
+<br style="clear: both;"/>
+<br/>
+<br/>
+
 
 <pre>{{ product | json }}</pre>
