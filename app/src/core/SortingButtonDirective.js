@@ -6,7 +6,7 @@ app.directive('sortingButton', function () {
             value: '@',
             sort: '='
         },
-        templateUrl: 'core/tpl/sortingButton.html',
+        templateUrl: 'src/core/tpl/sortingButton.html',
         link: function (scope) {
             scope.sortBy = function (byWhat, sortOrder) {
                 scope.sort.by = ['special', byWhat];
