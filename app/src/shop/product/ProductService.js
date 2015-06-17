@@ -1,14 +1,14 @@
-app.factory('Product', ['$http', '$resource', function ($http) {
+app.factory('Product', ['$http', '$resource', function($http) {
     return {
-        list: function () {
+        list: function() {
             return $http.get("resources/products.json")
-                .success(function (data, status, headers, config) {
+                .success(function(data, status, headers, config) {
                 })
-                .error(function (data, status, headers, config) {
+                .error(function(data, status, headers, config) {
                     alert("AJAX failed!");
                 });
         },
-        getById: function (productId) {
+        getById: function(productId) {
             return $http.get("resources/product.json?" + productId);
         }
     };

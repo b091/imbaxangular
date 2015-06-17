@@ -1,9 +1,9 @@
-app.factory('BlockChain', ['$http', function ($http) {
+app.factory('BlockChain', ['$http', function($http) {
     return {
-        getLatestBTCPrice: function () {
+        getLatestBTCPrice: function() {
             return $http.get('https://blockchain.info/pl/ticker?cors=true');
         },
-        getCurrencies: function(currencies){
+        getCurrencies: function(currencies) {
             return this.getLatestBTCPrice().then(function(data) {
                 data.currencies = [];
                 for (var key in data.data) {

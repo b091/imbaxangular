@@ -1,4 +1,4 @@
-app.directive('sortingButton', function () {
+app.directive('sortingButton', function() {
     return {
         restrict: 'E',
         scope: {
@@ -7,8 +7,8 @@ app.directive('sortingButton', function () {
             sort: '='
         },
         templateUrl: 'src/core/tpl/sortingButton.html',
-        link: function (scope) {
-            scope.sortBy = function (byWhat, sortOrder) {
+        link: function(scope) {
+            scope.sortBy = function(byWhat, sortOrder) {
                 scope.sort.by = ['special', byWhat];
                 scope.sort.desc = !scope.sort.desc; //sortOrder;
             }
