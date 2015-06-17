@@ -5,7 +5,8 @@ app.config(function ($routeProvider) {
     }).when('/basket', {
         templateUrl: 'templates/basket.html'
     }).when('/product/:productId', {
-        templateUrl: 'templates/product.html'
+        templateUrl: 'templates/product.html',
+        controller: 'ProductController'
     }).otherwise({
         redirectTo: '/home'
     });

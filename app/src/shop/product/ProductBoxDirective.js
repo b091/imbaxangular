@@ -5,7 +5,7 @@ app.directive('productBox', function() {
             value: '=',
             quantityOptions: '='
         },
-        templateUrl: 'directives/productBox.html',
+        templateUrl: 'src/shop/tpl/productBox.html',
         link: function($scope, element, attrs) {
             var basket = $scope.$parent.basket;
 
