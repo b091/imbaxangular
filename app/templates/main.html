@@ -31,15 +31,15 @@
 </div>
 
 <div class="product-sort pull-right">
-    <span>Sortowanie:</span>
+    <span class="glyphicon glyphicon-sort"></span>
 
     <div class="btn-group">
         <sorting-button value="price" text="Price" sort="sorting"></sorting-button>
         <sorting-button value="name" text="Name" sort="sorting"></sorting-button>
     </div>
 
-    <span>Opcje:</span>
-    <button class="btn btn-sm btn-default"
+    <span class="glyphicon glyphicon-cog"></span>
+    <button class="btn btn-xs"
             ng-click="hideSpecial = !hideSpecial"
             ng-class="{'active' : !hideSpecial}">
         {{hideSpecial ? 'Show' : 'Hide'}} special
