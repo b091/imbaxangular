@@ -1,48 +1,48 @@
-<div class="thumbnail"
-     ng-class="{'alert-warning' : value.special === true}"
-     ng-show="value.special === true && $parent.hideSpecial == false || value.special === false">
+<img src="{{ value.photo }}" alt="{{ value.name }}" class="img-responsive"/>
 
-    <img src="{{ value.photo }}" alt="{{ value.name }}" class="img-responsive"/>
-
-    <div class="caption">
+<div class="product-box-description">
         <span ng-repeat="tag in value.keywords">
             <span class="label label-info"> {{ tag }} </span>&nbsp;
         </span>
 
-        <form ng-show="isEditMode" name="product">
-            <div class="form-group" ng-class="{'has-error' : product.price.$invalid, 'has-success': product.price.$valid}">
-                <input name="name" type="text" ng-model="value.name" class="form-control"/>
-                <textarea name="desc" rows="3" ng-model="value.desc" class="form-control"></textarea>
-                <input type="number" name="price" ng-model="value.price" class="form-control" required/>
-            </div>
-        </form>
+    <form ng-show="isEditMode" name="product">
+        <div class="form-group" ng-class="{'has-error' : product.price.$invalid, 'has-success': product.price.$valid}">
+            <input name="name" type="text" ng-model="value.name" class="form-control"/>
+            <textarea name="desc" rows="3" ng-model="value.desc" class="form-control"></textarea>
+            <input type="number" name="price" ng-model="value.price" class="form-control" required/>
+        </div>
+    </form>
 
-        <h4 ng-hide="isEditMode"><a ng-href="#product/{{value.id}}">{{ value.name }}</a></h4>
+    <h4 ng-hide="isEditMode"><a ng-href="#product/{{value.id}}">{{ value.name }}</a></h4>
 
-        <p ng-hide="isEditMode" ng-click="onShowHideDescriptionChange()" class="product-description">
-            <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
-            <span ng-show="showHideDescription">{{ value.desc }}</span>
-        </p>
+    <p ng-hide="isEditMode" ng-click="onShowHideDescriptionChange()" class="product-description">
+        <span ng-hide="showHideDescription">{{ value.desc_short }}</span>
+        <span ng-show="showHideDescription">{{ value.desc }}</span>
+    </p>
 
-        <button class="btn btn-xs btn-default btn-link pull-right" ng-click="onEditInPlaceChange()">
-            <span class="glyphicon glyphicon-edit"></span>
-        </button>
+    <button class="btn btn-xs btn-default btn-link pull-right" ng-click="onEditInPlaceChange()">
+        <span class="glyphicon glyphicon-edit"></span>
+    </button>
 
-        <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
+    <span class="pull-right">{{ value.price | currency }} | {{ value.price / $parent.btcPrice | currency: 'BTC ' }} </span>
 
         <span class="text-left">
             <input ng-model="selectedElement"
                    type="checkbox"
                    id="buy-{{value.id}}"
                    ng-click="onCheckboxChange($event)" class="hidden"/>
-            <label for="buy-{{value.id}}" class="product-description btn btn-info btn-sm" ng-class="{'active' : !selectDisabled()}">Kupuje!</label></span>
+            <label for="buy-{{value.id}}"
+                   class="product-description btn btn-info btn-xs"
+                   ng-class="{'active' : !selectDisabled()}">
+                Kupuje!
+            </label>
+        </span>
 
-        <select ng-model="quantity"
-                ng-options="variant.value as variant.name for variant in quantityOptions"
-                ng-change="onSelectChange()"
-                ng-disabled="selectDisabled()">
-            <option value="">Ilość</option>
-        </select>
+    <select ng-model="quantity"
+            ng-options="variant.value as variant.name for variant in quantityOptions"
+            ng-change="onSelectChange()"
+            ng-disabled="selectDisabled()">
+        <option value="">Ilość</option>
+    </select>
 
-    </div>
 </div>
