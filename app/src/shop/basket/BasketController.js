@@ -74,6 +74,15 @@ app.factory('BasketController', ['BlockChain', function(BlockChain) {
         },
         getItems: function() {
             return items;
+        },
+        getItemById: function(itemId) {
+            for (var i = 0; i <= items.length; i++) {
+                if (items[i] && items[i].id === itemId) {
+                    return items[i];
+                }
+            }
+            return null;
         }
+
     };
 }]);
